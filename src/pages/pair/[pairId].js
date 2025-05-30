@@ -300,7 +300,7 @@ export default function PairPage() {
         </div>
 
         <div className="card">
-          <h2>Partner's Tasks</h2>
+          <h2>Partner&apos;s Tasks</h2>
           <div className="progress-bar">
             <div
               className="progress-bar-inner"
