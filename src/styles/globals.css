@@ -1,42 +1,334 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Updated Global CSS with new colors */
+
+body {
+  font-family: 'Inter', 'Poppins', 'Roboto', sans-serif;
+  background-color: #FF9F00; /* Orange background */
+  margin: 0;
+  padding: 20px;
+  color: #309898; /* Teal text */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+h2, h3 {
+  font-weight: 600;
+  margin: 20px 0;
+  color: #309898;
+}
+
+button {
+  background: #F4631E; /* Red-Orange */
+  color: #fff;
+  padding: 10px 16px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #CB0404; /* Dark Red */
+}
+
+input[type="text"] {
+  padding: 10px 14px;
+  border: 1px solid #309898;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 240px;
+  margin: 10px 0;
+  background-color: #fff;
+  color: #309898;
+}
+
+.progress-bar {
+  width: 100%;
+  background: #e0e0e0;
+  border-radius: 12px;
+  height: 18px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.5s ease;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  width: 350px;
+  margin: 20px;
+}
+
+.scoreboard {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  width: 360px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.button-group {
+  margin: 20px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+li {
+  text-align: left;
+  font-size: 16px;
+  padding: 8px 0;
+  color: #393E46;
+}
+
+.task-panels {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 300px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .task-panels {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    margin: 10px 0;
+  }
+
+  input[type="text"] {
+    width: 80%;
+  }
+
+  .scoreboard {
+    width: 90%;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #FF9F00;
+  text-align: center;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.dashboard-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.dashboard-subtitle {
+  font-size: 1.5rem;
+  color: #309898;
+  margin-bottom: 20px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.duo-list {
+  margin-bottom: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.dashboard-button, .dashboard-logout-button {
+  background-color: #F4631E;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dashboard-button:hover, .dashboard-logout-button:hover {
+  background-color: #CB0404;
+}
+
+.input-group {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dashboard-input {
+  padding: 10px 14px;
+  border: 1px solid #309898;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin: 10px;
+  width: 220px;
+  max-width: 90%;
+}
+
+.dashboard-status {
+  color: red;
+  margin-top: 10px;
+}
+
+.dashboard-logout-button {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 2rem;
+  }
+
+  .dashboard-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .dashboard-button, .dashboard-logout-button {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .dashboard-input {
+    width: 90%;
+    max-width: 300px;
+  }
+}
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF9F00; /* Beige background */
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.login-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color:#309898; /* Navy text */
+}
+
+.login-button {
+  background-color:#F4631E; /* Orange button */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: red; /* Navy hover */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .login-title {
+    font-size: 1.8rem;
+  }
+
+  .login-card {
+    padding: 30px 20px;
+  }
+}
+
+/* Custom checkbox styling */
+.task-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #262A56;
+}
+
+.task-checkbox input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #309898; /* Teal border */
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  position: relative;
+  background-color: #fff;
+}
+
+.task-checkbox input[type="checkbox"]:checked {
+  background-color: #309898; /* Orange background */
+  border-color: #309898;
+}
+
+.task-checkbox input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  opacity: 0;
+  transform: rotate(45deg);
+  transition: opacity 0.2s ease;
+}
+
+.task-checkbox input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .task-checkbox {
+    font-size: 0.95rem;
+    gap: 10px;
   }
 }
