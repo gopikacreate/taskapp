@@ -332,14 +332,14 @@ export default function PairPage() {
         <div className="popup">
           <h2>
             {winnerInfo.winner === "tie"
-              ? "It's a tie! 🤝"
+              ? "It&apos;s a tie! 🤝"
               : winnerInfo.winner === user.uid
               ? "You won! 🏆"
               : "Your partner won! 🎉"}
           </h2>
           <p>Your Completion: {winnerInfo.percentages?.[user.uid] || 0}%</p>
           <p>
-            Partner's Completion:{" "}
+           Partner&apos;s Completion:{" "}
             {Object.entries(winnerInfo.percentages || {}).find(
               ([k]) => k !== user.uid
             )?.[1] || 0}
