@@ -332,7 +332,7 @@ export default function PairPage() {
         <div className="popup">
           <h2>
             {winnerInfo.winner === "tie"
-              ? "It&apos;s a tie! 🤝"
+              ? `It's a tie! 🤝`
               : winnerInfo.winner === user.uid
               ? "You won! 🏆"
               : "Your partner won! 🎉"}
