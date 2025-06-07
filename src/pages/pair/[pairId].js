@@ -30,8 +30,8 @@ export default function PairPage() {
   const [scoreBoard, setScoreBoard] = useState({});
   const [timerEnded, setTimerEnded] = useState(false);
 
-  const TIMER_DURATION = 30 * 1000; // 30 seconds
-// const TIMER_DURATION = 24 * 60 * 60 * 1000; // 24 hours (production)
+  // const TIMER_DURATION = 30 * 1000; // 30 seconds
+  const TIMER_DURATION = 24 * 60 * 60 * 1000; // 24 hours (production)
   const calculateAndSaveScore = async () => {
     const gameDate = gameStatus.startDate;
     const taskRef = collection(db, "pairs", pairId, "tasks");
@@ -91,7 +91,6 @@ export default function PairPage() {
     });
 
     setWinnerInfo({ winner, percentages });
-     
   };
 
   useEffect(() => {
@@ -139,11 +138,13 @@ export default function PairPage() {
         if (!timerEnded) {
           setTimerEnded(true);
           calculateAndSaveScore();
-        
-          
         }
       } else {
-        setTimeLeft(`${Math.floor(diff / 1000)}s`);
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
+        // setTimeLeft(`${Math.floor(diff / 1000)}s`);
       }
     }, 1000);
 
@@ -327,8 +328,8 @@ export default function PairPage() {
           </ul>
         </div>
       </div>
-{console.log("timerEnded",timerEnded)}
-      {(winnerInfo && timerEnded) &&  (
+      {console.log("timerEnded", timerEnded)}
+      {winnerInfo && timerEnded && (
         <div className="popup">
           <h2>
             {winnerInfo.winner === "tie"
@@ -339,7 +340,7 @@ export default function PairPage() {
           </h2>
           <p>Your Completion: {winnerInfo.percentages?.[user.uid] || 0}%</p>
           <p>
-           Partner&apos;s Completion:{" "}
+            Partner&apos;s Completion:{" "}
             {Object.entries(winnerInfo.percentages || {}).find(
               ([k]) => k !== user.uid
             )?.[1] || 0}
